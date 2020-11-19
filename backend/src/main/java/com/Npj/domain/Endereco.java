@@ -1,4 +1,4 @@
-package com.ecommerc.domain;
+package com.Npj.domain;
 
 import java.io.Serializable;
 

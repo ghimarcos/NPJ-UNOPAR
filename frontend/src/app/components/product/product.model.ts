@@ -1,5 +1,9 @@
+import { MatDateFormats } from '@angular/material/core';
+
 export interface Product{
     id? : number
-    name : string
-    price : number
+    nome : string
+    email : string
+    senha : string
+   // data_nasc : MatDateFormats
 }

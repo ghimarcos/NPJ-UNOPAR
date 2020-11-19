@@ -1,13 +1,13 @@
-package com.ecommerc;
+package com.Npj;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class EcomApplication {
+public class NpjApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EcomApplication.class, args);
+		SpringApplication.run(NpjApplication.class, args);
 	}
 
 }

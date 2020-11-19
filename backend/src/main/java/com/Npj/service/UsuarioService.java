@@ -1,33 +1,32 @@
-package com.ecommerc.service;
+package com.Npj.service;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.ecommerc.domain.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
-import com.ecommerc.domain.Endereco;
-import com.ecommerc.repository.EnderecoRepository;
+import com.Npj.domain.Usuario;
+import com.Npj.repository.UsuarioRepository;
 
 @Service
-public class EnderecoService {
-	
+public class UsuarioService {
+
 	@Autowired
-	private EnderecoRepository repo;
-	
-	public List<Endereco> findAll() {
-		List<Endereco> obj = repo.findAll();
+	private UsuarioRepository repo;
+
+	public List<Usuario> findAll() {
+		List<Usuario> obj = repo.findAll();
 		return obj;
 	}
 
-	public Optional<Endereco> find(Integer id) {
-		Optional<Endereco> usu = repo.findById(id);
+	public Optional<Usuario> find(Integer id) {
+		Optional<Usuario> usu = repo.findById(id);
 		return usu;
 	}
 
-	public Endereco insert(Endereco obj) {
+	public Usuario insert(Usuario obj) {
 		repo.save(obj);
 		return obj;
 	}
@@ -41,9 +40,4 @@ public class EnderecoService {
 		}
 
 	}
-
-
-
-
-
 }
