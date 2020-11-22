@@ -11,10 +11,10 @@ import { Product } from '../product.model';
 export class ProductCreateComponent implements OnInit {
 
   product : Product = {
-      nome : 'Gabriel',
-      email : 'gabriel123@gmail.com',
-      senha : 'teste123',
-     // data_nasc : new Date("2007-01-06")
+      nome : '',
+      email : '',
+      senha : '',
+     dataNasc : null
 
   }
 

@@ -5,5 +5,5 @@ export interface Product{
     nome : string
     email : string
     senha : string
-   // data_nasc : MatDateFormats
+    dataNasc : Date
 }
