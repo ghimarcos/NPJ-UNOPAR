@@ -1,0 +1,37 @@
+<mat-card>
+    <mat-card-title>
+        Novo Usuário
+    </mat-card-title>
+</mat-card>
+<form>
+
+        <mat-form-field>
+            <input matInput placeholder="Nome" 
+            [(ngModel)] = "product.nome" name="name">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Email"
+            [(ngModel)] = "product.email" name="email">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Senha" type="password"
+            [(ngModel)] = "product.senha" name="password">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Data de Nascimento</mat-label>
+            <input matInput [matDatepicker]="picker" (click)="picker.open()"
+            [(ngModel)] = "product.dataNasc" name="birthday">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi="true" #picker></mat-datepicker>
+        </mat-form-field>
+        
+</form>
+<button mat-raised-button (click)="createProduct()" color = "primary">
+    Salvar
+</button>
+<button mat-raised-button (click)="cancel()">
+    Cancelar
+</button>
