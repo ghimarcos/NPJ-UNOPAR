@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../product.service';
 import { Product } from '../product.model';
 import { ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-update',
@@ -11,7 +12,7 @@ import { ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 })
 export class ProductUpdateComponent implements OnInit {
 
-  product: Product;
+  product : Product
 
   constructor(private productService: ProductService,
     private router: Router,
@@ -30,7 +31,6 @@ export class ProductUpdateComponent implements OnInit {
     this.productService.update(this.product).subscribe(() => {
       this.productService.showOnConsole("Produto Atualizado com Sucesso!")
       this.router.navigate(['/products'])
-      console.log
     }
     )
   }

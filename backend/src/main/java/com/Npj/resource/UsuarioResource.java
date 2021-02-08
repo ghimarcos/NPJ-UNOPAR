@@ -5,6 +5,7 @@ import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
+import com.Npj.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +14,7 @@ import com.Npj.domain.Usuario;
 import com.Npj.service.UsuarioService;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-@CrossOrigin
+@CrossOrigin()
 @RestController
 @RequestMapping(value="/usuario")
 public class UsuarioResource {
@@ -32,6 +33,7 @@ public class UsuarioResource {
 		Optional<Usuario> obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
+
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody Usuario obj) {
 		System.out.println(obj);
@@ -45,4 +47,10 @@ public class UsuarioResource {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Void> update(@RequestBody Usuario obj, @PathVariable Integer id) {
+	obj = service.update(obj);
+	return ResponseEntity.noContent().build();
+	}
+
 }

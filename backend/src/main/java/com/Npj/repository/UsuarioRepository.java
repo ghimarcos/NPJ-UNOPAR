@@ -5,6 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import com.Npj.domain.Usuario;
 
+
+
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 

@@ -13,6 +13,7 @@ import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 
+
 @Data
 @Entity
 public class Usuario implements Serializable {
