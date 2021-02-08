@@ -58,6 +58,10 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { ProductReadComponent } from './components/product/product-read/product-read.component';
+import { ProductRead2Component } from './components/product/product-read2/product-read2.component';
+import { ProductUpdateComponent } from './components/product/product-update/product-update.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +73,10 @@ import {OverlayModule} from '@angular/cdk/overlay';
     ProductCrudComponent,
     RedDirective,
     ForDirective,
-    ProductCreateComponent
+    ProductCreateComponent,
+    ProductReadComponent,
+    ProductRead2Component,
+    ProductUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -122,9 +129,12 @@ import {OverlayModule} from '@angular/cdk/overlay';
     OverlayModule,
     PortalModule,
     ScrollingModule,
+  ],
+  providers: [
+
+    {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'}
 
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
