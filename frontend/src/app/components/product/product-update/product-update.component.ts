@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../product.service';
 import { Product } from '../product.model';
-import { ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
-import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-product-update',
@@ -12,11 +11,18 @@ import { Observable } from 'rxjs';
 })
 export class ProductUpdateComponent implements OnInit {
 
-  product : Product
+  product : Product = {
+    nome : '',
+    email : '',
+    senha : '',
+   dataNasc : null
 
+}
+  
   constructor(private productService: ProductService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    ) { }
 
 
 
@@ -25,6 +31,8 @@ export class ProductUpdateComponent implements OnInit {
     this.productService.readyById(id).subscribe(product => {
       this.product = product
     });
+
+    
   }
 
   updateProduct(): void {

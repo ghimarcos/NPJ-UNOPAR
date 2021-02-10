@@ -1,11 +1,13 @@
 package com.Npj.domain;
 import java.io.Serializable;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -25,9 +27,10 @@ public class Usuario implements Serializable {
 	private String email;
 	private String senha;
 
-	@DateTimeFormat(pattern = "yyyy-mm-dd")
+
+	@JsonFormat(pattern="yyyy-MM-dd")
 	@Column(columnDefinition = "date")
-	private LocalDate dataNasc;
+	private Date dataNasc;
 
 	@JsonIgnoreProperties({"usuario","id"})
 	@OneToMany(mappedBy = "usuario")
