@@ -27,15 +27,4 @@ public class Usuario implements Serializable {
 	private String email;
 	private String senha;
 
-
-	@JsonFormat(pattern="yyyy-MM-dd")
-	@Column(columnDefinition = "date")
-	private Date dataNasc;
-
-	@JsonIgnoreProperties({"usuario","id"})
-	@OneToMany(mappedBy = "usuario")
-	private List<Endereco> ends = new ArrayList<>();
-
-	//private Perfil perfil;
-
 }

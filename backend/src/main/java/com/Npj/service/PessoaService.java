@@ -1,42 +1,41 @@
 package com.Npj.service;
 
-import java.util.List;
-import java.util.Optional;
-
+import com.Npj.domain.Pessoa;
+import com.Npj.repository.PessoaRepository;
 import javassist.tools.rmi.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
-
-import com.Npj.domain.Usuario;
-import com.Npj.repository.UsuarioRepository;
 import org.springframework.web.bind.annotation.CrossOrigin;
+
+import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin
 @Service
-public class UsuarioService {
+public class PessoaService {
 
 	@Autowired
-	private UsuarioRepository repo;
+	private PessoaRepository repo;
 
-	public List<Usuario> findAll() {
-		List<Usuario> obj = repo.findAll();
+	public List<Pessoa> findAll() {
+		List<Pessoa> obj = repo.findAll();
 		return obj;
 	}
 
-	public Optional<Usuario> find(Integer id){
-		Optional<Usuario> usu = repo.findById(id);
-		if (usu == null){
+	public Optional<Pessoa> find(Integer id){
+		Optional<Pessoa> pes = repo.findById(id);
+		if (pes == null){
 			try {
 				throw new ObjectNotFoundException("Objeto não encontrado! Id : " + id + "...");
 			} catch (ObjectNotFoundException e) {
 				e.printStackTrace();
 			}
 		}
-		return usu;
+		return pes;
 	}
 
-	public Usuario insert(Usuario obj) {
+	public Pessoa insert(Pessoa obj) {
 		repo.save(obj);
 		return obj;
 	}
@@ -50,7 +49,7 @@ public class UsuarioService {
 		}
 
 	}
-	public Usuario update(Usuario obj) {
+	public Pessoa update(Pessoa obj) {
 		find(obj.getId());
 		System.out.println(obj);
 		return repo.save(obj);

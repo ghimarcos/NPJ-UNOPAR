@@ -3,12 +3,14 @@ delete from endereco;
 delete from cidade;
 delete from estado;
 delete from usuario;
+delete from pessoa;
 
 set foreign_key_checks = 1;
 alter table endereco auto_increment = 1;
 alter table cidade auto_increment = 1;
 alter table estado auto_increment = 1;
 alter table usuario auto_increment = 1;
+alter table pessoa auto_increment = 1;
 
 
 INSERT INTO estado (id, descricao, uf) VALUES
@@ -5611,14 +5613,24 @@ INSERT INTO cidade (id, descricao, estado_id) VALUES
 
 
 
-INSERT INTO usuario (id, nome, email, senha, data_nasc)
-values 
-(1, 'Giovani','ghimarcos123@gmail.com','$%dhyjkhja@%**asdfrt??/u585','1999-06-03'),
-(2, 'João','joao@gmail.com','$%dhyjkhja@%**asdfrt??/u585','1999-08-20'),
-(3, 'Pedro','pedro_junior@gmail.com','$%dhyjkhja@%**asdfrt??/u585','1999-01-10'),
-(4, 'Ana','anaLuiza@hotmail.com','$%dhyjkhja@%**asdfrt??/u585','1999-09-11');
+INSERT INTO usuario (id, nome, email, senha)
+values
+(1, 'Giovani','ghimarcos123@gmail.com','123456'),
+(2, 'João','joao@gmail.com','123456'),
+(3, 'Pedro','pedro_junior@gmail.com','123456'),
+(4, 'Ana','anaLuiza@hotmail.com','123456');
+
+INSERT INTO pessoa (id, nome, rg, cpf, data_nasc, estado_civil, grau_escolar, telefone, email, documentos, endereco_id)
+values
+(1, 'Giovani','46.548.631-9','277.122.690-17','1999-03-06','Solteiro','Faculdade','(88) 74453-4433','giovani@gmail.com.br','anexo',1),
+(2, 'João','15.904.922-2','754.445.510-63','1975-08-05','Solteiro','Sem Estudo','(68) 33503-0451','joao@gmail.com.br','anexo',2),
+(3, 'Pedro','12.944.936-2','749.891.410-75','1997-12-22','Casado','Ensino Superior','(65) 80404-8005','pedro@gmail.com.br','anexo',3),
+(4, 'Ana','40.173.745-7','897.750.850-98','2002-06-01','Solteira','Ensino Médio','(42) 38331-8353','ana@gmail.com.br','anexo',4);
 
 
-INSERT INTO `NPJ_BACKEND`.`endereco` (`id`, `cep`, `bairro`, `complemento`, `numero`, `rua`, `cidade_id`, `usuario_id`)
+INSERT INTO endereco (id, cep, bairro, complemento, numero, rua, cidade_id, pessoa_id)
 VALUES
- ('1', '86707555', 'columbia III', '', '300', 'Beija flor de Coleira', '2802', '1');
+ ('1', '49000-468', 'columbia III', 'null', '300', 'Beija flor de Coleira', '2802', '1'),
+ ('2', '64040-093', 'Vila Garcia', 'null', '154', 'Santa Helena', '5503', '2'),
+ ('3', '66113-045', 'Cambará', 'apartamento', '202', 'Catavento', '2021', '3'),
+ ('4', '87040-230', 'Angelim', 'null', '10', 'Cidade de Deus', '1032', '4');
