@@ -1,3 +1,14 @@
-alter table cidade add constraint FKcidade_estado foreign key (estado_id) references estado (id);
-alter table endereco add constraint FKendereco_cidade foreign key (cidade_id) references cidade (id);
-alter table endereco add constraint FKendereco_pessoa foreign key (pessoa_id) references pessoa (id);
+alter table agenda add constraint FKAgendausuario foreign key (usuario_id) references usuario (id);
+alter table atendimento add constraint FKAtendimentoPessoa foreign key (pessoa_id) references pessoa (id);
+alter table atendimento_documento add constraint FKAtendimentoDocumentoAtendimento foreign key (atendimento_id) references atendimento (id);
+alter table atendimento_documento add constraint FKAtendimentoDocumentoDocumento foreign key (documento_id) references documento (id);
+alter table cidade add constraint FKCidadeEstado foreign key (estado_id) references estado (id);
+alter table documento add constraint FKDocumentoProcesso foreign key (processo_id) references processo (id);
+alter table endereco add constraint FKEnderecoCidade foreign key (cidade_id) references cidade (id);
+alter table pessoa add constraint FKPessoaEndereco foreign key (endereco_id) references endereco (id);
+alter table processo add constraint FKProcessoComarca foreign key (comarca_id) references comarca (id);
+alter table processo add constraint FKPriocessoVara foreign key (vara_id) references vara (id);
+alter table processo_pessoas add constraint FKUsuarioPessoasPessoa foreign key (pessoas_id) references pessoa (id);
+alter table processo_pessoas add constraint FKUsuarioPessoasProcesso foreign key (processo_id) references processo (id);
+alter table usuario_permissao add constraint FKUsuarioPermissaoPermissao foreign key (id_permissao) references permissao (id);
+alter table usuario_permissao add constraint FKUsuarioPermissaoUsuario foreign key (id_usuario) references usuario (id);

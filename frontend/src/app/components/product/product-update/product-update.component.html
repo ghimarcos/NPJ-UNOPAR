@@ -5,28 +5,58 @@
 </mat-card>
 <form>
 
-        <mat-form-field>
-            <input matInput placeholder="Nome" 
-            [(ngModel)] = "product.nome" name="name">
-        </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Nome" 
+        [(ngModel)] = "product.nome" name="name">
+    </mat-form-field>
 
-        <mat-form-field>
-            <input matInput placeholder="Email"
-            [(ngModel)] = "product.email" name="email">
-        </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Email"
+        [(ngModel)] = "product.email" name="email">
+    </mat-form-field>
 
-        <mat-form-field>
-            <input matInput placeholder="Senha" type="password"
-            [(ngModel)] = "product.senha" name="password">
-        </mat-form-field>
+    <mat-form-field appearance="fill">
+        <input matInput placeholder="RG"
+        [(ngModel)] = "product.rg" name="rg">
+    </mat-form-field>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Data de Nascimento</mat-label>
-            <input matInput [matDatepicker]="picker" (click)="picker.open()"
-            [(ngModel)] = "product.dataNasc" name="birthday">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker touchUi="true" #picker></mat-datepicker>
-        </mat-form-field>
+    <mat-form-field appearance="fill">
+        <input matInput placeholder="CPF"
+        [(ngModel)] = "product.cpf" name="cpf">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <input matInput placeholder="Estado Civil"
+        [(ngModel)] = "product.estado_civil" name="estado_civil">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <input matInput placeholder="Grau Escolar"
+        [(ngModel)] = "product.grau_escolar" name="grau_escolar">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <input matInput placeholder="Telefone"
+        [(ngModel)] = "product.telefone" name="telefone">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <input matInput placeholder="Documento"
+        [(ngModel)] = "product.documento" name="documento">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <input matInput placeholder="Tipo"
+        [(ngModel)] = "product.tipo" name="tipo">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Data de Nascimento</mat-label>
+        <input matInput [matDatepicker]="picker" (click)="picker.open() "
+        [(ngModel)] = "product.data_nasc" name="birthday">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi="true" #picker></mat-datepicker>
+    </mat-form-field>
         
 </form>
 <button mat-raised-button (click)="updateProduct()" color = "primary">

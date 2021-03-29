@@ -1,17 +1,83 @@
 set foreign_key_checks = 0;
-delete from endereco;
+set sql_safe_updates=0;
+delete from agenda;
+delete from atendimento;
+delete from atendimento_documento;
 delete from cidade;
+delete from comarca;
+delete from documento;
+delete from endereco;
 delete from estado;
-delete from usuario;
+delete from permissao;
 delete from pessoa;
+delete from processo;
+delete from processo_pessoas;
+delete from usuario;
+delete from usuario_permissao;
+delete from vara;
 
 set foreign_key_checks = 1;
-alter table endereco auto_increment = 1;
+alter table agenda auto_increment = 1;
+alter table atendimento auto_increment = 1;
 alter table cidade auto_increment = 1;
+alter table comarca auto_increment = 1;
+alter table documento auto_increment = 1;
+alter table endereco auto_increment = 1;
 alter table estado auto_increment = 1;
-alter table usuario auto_increment = 1;
+alter table permissao auto_increment = 1;
 alter table pessoa auto_increment = 1;
+alter table processo auto_increment = 1;
+alter table usuario auto_increment = 1;
+alter table vara auto_increment = 1;
 
+INSERT INTO usuario (id, email, nome, senha) VALUES ('1', 'giovani@hotmail.com', 'Giovani', '123');
+INSERT INTO usuario (id, email, nome, senha) VALUES ('2', 'igor@hotmail.com', 'Igor', '1234');
+INSERT INTO usuario (id, email, nome, senha) VALUES ('3', 'matheus@hotmail.com', 'Matheus', '12345');
+INSERT INTO usuario (id, email, nome, senha) VALUES ('4', 'wesley@hotmail.com', 'Wesley', '123456');
+INSERT INTO usuario (id, email, nome, senha) VALUES ('5', 'rodrigo@hotmail.com', 'Rodrigo', '1234567');
+
+INSERT INTO agenda (id, conteudo, data, descricao, usuario_id) VALUES ('1', 'Reunião', '2021/03/05', 'Reunião com o cliente José Morais',1);
+INSERT INTO agenda (id, conteudo, data, descricao, usuario_id) VALUES ('2', 'Marcação', '2021/04/12', 'Não esquecer de cadastrar cliente Maria',2);
+INSERT INTO agenda (id, conteudo, data, descricao, usuario_id) VALUES ('3', 'Marcação', '2021/05/21', 'Conversar com a professora de Direito',2);
+INSERT INTO agenda (id, conteudo, data, descricao, usuario_id) VALUES ('4', 'Reunião', '2021/08/15', 'Reunião com a cliente Maria',3);
+
+INSERT INTO atendimento (id, datahora, descricao, motivo, status) VALUES ('1', '2021-02-03', 'Atendimento para processar marido agressor', 'Agressão', 'Ativo');
+INSERT INTO atendimento (id, datahora, descricao, motivo, status) VALUES ('2', '2021-05-12', 'Processo a vizinho que deixa o som ligado até tarde', 'Perturbação', 'Ativo');
+INSERT INTO atendimento (id, datahora, descricao, motivo, status) VALUES ('3', '2021-08-01', 'Processo a instituição que dona Maria Trabalha', 'INSS', 'Inativo');
+INSERT INTO atendimento (id, datahora, descricao, motivo, status) VALUES ('4', '2021-10-13', 'Processo por injúria do Senhor José', 'Injúria', 'Ativo');
+
+INSERT INTO documento(id, descricao) VALUES ('1', 'RG');
+INSERT INTO documento(id, descricao) VALUES ('2', 'CPF');
+INSERT INTO documento(id, descricao) VALUES ('3', 'Certidao de Nascimento');
+INSERT INTO documento(id, descricao) VALUES ('4', 'Comprovante de Pobreza');
+
+INSERT INTO atendimento_documento (data, atendimento_id, documento_id) VALUES ('2021-03-05', '1', '1');
+INSERT INTO atendimento_documento (data, atendimento_id, documento_id) VALUES ('2021-04-12', '2', '2');
+INSERT INTO atendimento_documento (data, atendimento_id, documento_id) VALUES ('2021-06-15', '3', '3');
+INSERT INTO atendimento_documento (data, atendimento_id, documento_id) VALUES ('2021-05-29', '4', '4');
+
+
+INSERT INTO vara (id, descricao) VALUES ('1', 'vara 1');
+INSERT INTO vara (id, descricao) VALUES ('2', 'vara 2');
+INSERT INTO vara (id, descricao) VALUES ('3', 'vara 3');
+INSERT INTO vara (id, descricao) VALUES ('4', 'vara 4');
+INSERT INTO vara (id, descricao) VALUES ('5', 'vara 5');
+
+
+
+
+INSERT INTO comarca (id, descricao) VALUES ('1', 'Arapongas');
+INSERT INTO comarca (id, descricao) VALUES ('2', 'Rolandia');
+INSERT INTO comarca (id, descricao) VALUES ('3', 'Cambe');
+INSERT INTO comarca (id, descricao) VALUES ('4', 'Londrina');
+INSERT INTO comarca (id, descricao) VALUES ('5', 'Apucarana');
+
+
+INSERT INTO processo (id, status, comarca_id, vara_id) VALUES ('1', 'Ativo', '2', '3');
+INSERT INTO processo (id, status, comarca_id, vara_id) VALUES ('2', 'Ativo', '3', '5');
+INSERT INTO processo (id, status, comarca_id, vara_id) VALUES ('3', 'Inativo', '4', '2');
+INSERT INTO processo (id, status, comarca_id, vara_id) VALUES ('4', 'Ativo', '1', '4');
+INSERT INTO processo (id, status, comarca_id, vara_id) VALUES ('5', 'Inativo', '5', '1');
 
 INSERT INTO estado (id, descricao, uf) VALUES
 (1, 'Acre', 'AC'),
@@ -5516,121 +5582,17 @@ INSERT INTO cidade (id, descricao, estado_id) VALUES
 (5470, 'Darcinópolis', 27),
 (5471, 'Dianópolis', 27);
 
-INSERT INTO cidade (id, descricao, estado_id) VALUES
-(5472, 'Divinopolis do Tocantins', 27),
-(5473, 'Dois Irmãos do Tocantins', 27),
-(5474, 'Dueré', 27),
-(5475, 'Esperantina', 27),
-(5476, 'Fátima', 27),
-(5477, 'Figueirópolis', 27),
-(5478, 'Filadélfia', 27),
-(5479, 'Formoso do Araguaia', 27),
-(5480, 'Fortaleza do Tabocão', 27),
-(5481, 'Goianorte', 27),
-(5482, 'Goiatins', 27),
-(5483, 'Guaraí', 27),
-(5484, 'Gurupi', 27),
-(5485, 'Ipueiras', 27),
-(5486, 'Itacajá', 27),
-(5487, 'Itaguatins', 27),
-(5488, 'Itapiratins', 27),
-(5489, 'Itaporã do Tocantins', 27),
-(5490, 'Jaú do Tocantins', 27),
-(5491, 'Juarina', 27),
-(5492, 'Lagoa da Confusão', 27),
-(5493, 'Lagoa do Tocantins', 27),
-(5494, 'Lajeado', 27),
-(5495, 'Lavandeira', 27),
-(5496, 'Lizarda', 27),
-(5497, 'Luzinópolis', 27),
-(5498, 'Marianópolis do Tocantins', 27),
-(5499, 'Mateiros', 27),
-(5500, 'Maurilândia do Tocantins', 27),
-(5501, 'Miracema do Tocantins', 27),
-(5502, 'Miranorte', 27),
-(5503, 'Monte do Carmo', 27),
-(5504, 'Monte Santo do Tocantins', 27),
-(5505, 'Muricilândia', 27),
-(5506, 'Natividade', 27),
-(5507, 'Nazaré', 27),
-(5508, 'Nova Olinda', 27),
-(5509, 'Nova Rosalândia', 27),
-(5510, 'Novo Acordo', 27),
-(5511, 'Novo Alegre', 27),
-(5512, 'Novo Jardim', 27),
-(5513, 'Oliveira de Fátima', 27),
-(5514, 'Palmas', 27),
-(5515, 'Palmeirante', 27),
-(5516, 'Palmeiras do Tocantins', 27),
-(5517, 'Palmeirópolis', 27),
-(5518, 'Paraíso do Tocantins', 27),
-(5519, 'Paranã', 27),
-(5520, 'Pau d`Arco', 27),
-(5521, 'Pedro Afonso', 27),
-(5522, 'Peixe', 27),
-(5523, 'Pequizeiro', 27),
-(5524, 'Pindorama do Tocantins', 27),
-(5525, 'Piraquê', 27),
-(5526, 'Pium', 27),
-(5527, 'Ponte Alta do Bom Jesus', 27),
-(5528, 'Ponte Alta do Tocantins', 27),
-(5529, 'Porto Alegre do Tocantins', 27),
-(5530, 'Porto Nacional', 27),
-(5531, 'Praia Norte', 27),
-(5532, 'Presidente Kennedy', 27),
-(5533, 'Pugmil', 27),
-(5534, 'Recursolândia', 27),
-(5535, 'Riachinho', 27),
-(5536, 'Rio da Conceição', 27),
-(5537, 'Rio dos Bois', 27),
-(5538, 'Rio Sono', 27),
-(5539, 'Sampaio', 27),
-(5540, 'Sandolândia', 27),
-(5541, 'Santa Fé do Araguaia', 27),
-(5542, 'Santa Maria do Tocantins', 27),
-(5543, 'Santa Rita do Tocantins', 27),
-(5544, 'Santa Rosa do Tocantins', 27),
-(5545, 'Santa Tereza do Tocantins', 27),
-(5546, 'Santa Terezinha do Tocantins', 27),
-(5547, 'São Bento do Tocantins', 27),
-(5548, 'São Félix do Tocantins', 27),
-(5549, 'São Miguel do Tocantins', 27),
-(5550, 'São Salvador do Tocantins', 27),
-(5551, 'São Sebastião do Tocantins', 27),
-(5552, 'São Valério da Natividade', 27),
-(5553, 'Silvanópolis', 27),
-(5554, 'Sítio Novo do Tocantins', 27),
-(5555, 'Sucupira', 27),
-(5556, 'Taguatinga', 27),
-(5557, 'Taipas do Tocantins', 27),
-(5558, 'Talismã', 27),
-(5559, 'Tocantínia', 27),
-(5560, 'Tocantinópolis', 27),
-(5561, 'Tupirama', 27),
-(5562, 'Tupiratins', 27),
-(5563, 'Wanderlândia', 27),
-(5564, 'Xambioá', 27);
 
+INSERT INTO endereco (`id`, `bairro`, `cep`, `complemento`, `longradouro`, `numero`, `cidade_id`)
+VALUES
+ ('1', 'columbia III', '49000-468', 'null', 'Beija flor de Coleira', '300', '2802'),
+ ('2', 'Vila Garcia', '64040-093','null','Santa Helena',  '154',  '5203'),
+ ('3', 'Cambará', '66113-045', 'apartamento','Catavento', '202',  '2021'),
+ ('4','Angelim', '87040-230', 'null','Cidade de Deus',  '10',  '1032');
 
-
-INSERT INTO usuario (id, nome, email, senha)
-values
-(1, 'Giovani','ghimarcos123@gmail.com','123456'),
-(2, 'João','joao@gmail.com','123456'),
-(3, 'Pedro','pedro_junior@gmail.com','123456'),
-(4, 'Ana','anaLuiza@hotmail.com','123456');
-
-INSERT INTO pessoa (id, nome, rg, cpf, data_nasc, estado_civil, grau_escolar, telefone, email, documentos, endereco_id)
+INSERT INTO pessoa (id, nome, rg, cpf, data_nasc, estado_civil, grau_escolar, telefone, email, documento, endereco_id)
 values
 (1, 'Giovani','46.548.631-9','277.122.690-17','1999-03-06','Solteiro','Faculdade','(88) 74453-4433','giovani@gmail.com.br','anexo',1),
 (2, 'João','15.904.922-2','754.445.510-63','1975-08-05','Solteiro','Sem Estudo','(68) 33503-0451','joao@gmail.com.br','anexo',2),
 (3, 'Pedro','12.944.936-2','749.891.410-75','1997-12-22','Casado','Ensino Superior','(65) 80404-8005','pedro@gmail.com.br','anexo',3),
 (4, 'Ana','40.173.745-7','897.750.850-98','2002-06-01','Solteira','Ensino Médio','(42) 38331-8353','ana@gmail.com.br','anexo',4);
-
-
-INSERT INTO endereco (id, cep, bairro, complemento, numero, rua, cidade_id, pessoa_id)
-VALUES
- ('1', '49000-468', 'columbia III', 'null', '300', 'Beija flor de Coleira', '2802', '1'),
- ('2', '64040-093', 'Vila Garcia', 'null', '154', 'Santa Helena', '5503', '2'),
- ('3', '66113-045', 'Cambará', 'apartamento', '202', 'Catavento', '2021', '3'),
- ('4', '87040-230', 'Angelim', 'null', '10', 'Cidade de Deus', '1032', '4');

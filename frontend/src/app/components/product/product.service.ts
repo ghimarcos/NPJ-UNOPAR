@@ -4,12 +4,13 @@ import { MatSnackBar } from '@angular/material/snack-bar'
 import { Observable } from 'rxjs';
 import { Product } from './product.model'
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
   
-  baseUrl = 'http://localhost:9100/usuario'
+  baseUrl = 'http://localhost:9100/pessoas'
 
 
   constructor(private snackBar : MatSnackBar, private http : HttpClient) { }

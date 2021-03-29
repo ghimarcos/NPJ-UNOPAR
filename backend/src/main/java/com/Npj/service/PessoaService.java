@@ -1,38 +1,40 @@
 package com.Npj.service;
 
-import com.Npj.domain.Pessoa;
-import com.Npj.repository.PessoaRepository;
-import javassist.tools.rmi.ObjectNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.CrossOrigin;
-
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.Npj.domain.Documento;
+import com.Npj.domain.Pessoa;
+import com.Npj.domain.flat.PessoaFlat;
+import com.Npj.repository.PessoaRepostory;
+
+
 @Service
 public class PessoaService {
-
 	@Autowired
-	private PessoaRepository repo;
+	private PessoaRepostory repo;
 
+	//Método FindAll pessoaflat
+//	public List<PessoaFlat> findAll() {
+//		List<PessoaFlat> pFlats = new ArrayList<PessoaFlat>();
+//		List<Pessoa>pes = repo.findAllList();
+//		for( Pessoa p : pes) {
+//			PessoaFlat pf = new PessoaFlat(p);
+//			pFlats.add(pf);
+//		}
+//
+//		return pFlats;
+//
+//	}
+
+	//Método findAll pessoa
 	public List<Pessoa> findAll() {
 		List<Pessoa> obj = repo.findAll();
 		return obj;
-	}
-
-	public Optional<Pessoa> find(Integer id){
-		Optional<Pessoa> pes = repo.findById(id);
-		if (pes == null){
-			try {
-				throw new ObjectNotFoundException("Objeto não encontrado! Id : " + id + "...");
-			} catch (ObjectNotFoundException e) {
-				e.printStackTrace();
-			}
-		}
-		return pes;
 	}
 
 	public Pessoa insert(Pessoa obj) {
@@ -40,19 +42,22 @@ public class PessoaService {
 		return obj;
 	}
 
+	public Pessoa from(Pessoa obj) {
+		return repo.save(obj);
+	}
+	public Optional<Pessoa> find(Integer id) {
+		Optional<Pessoa> pes = repo.findById(id);
+		return pes;
+	}
+
 	public void delete(Integer id) {
 		find(id);
 		try {
 			repo.deleteById(id);
-		} catch (DataIntegrityViolationException e) {
 
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
-
-	}
-	public Pessoa update(Pessoa obj) {
-		find(obj.getId());
-		System.out.println(obj);
-		return repo.save(obj);
 	}
 
 }

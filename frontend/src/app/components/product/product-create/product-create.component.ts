@@ -3,6 +3,7 @@ import { ProductService } from './../product.service'
 import { Router } from '@angular/router';
 import { Product } from '../product.model';
 
+
 @Component({
   selector: 'app-product-create',
   templateUrl: './product-create.component.html',
@@ -11,15 +12,24 @@ import { Product } from '../product.model';
 export class ProductCreateComponent implements OnInit {
 
   product : Product = {
-      nome : '',
-      email : '',
-      senha : '',
-     dataNasc : null
+    nome : "",
+    rg : "",
+    cpf :"",
+    data_nasc : "",
+    estado_civil :"",
+    grau_escolar :"",
+    telefone : "",
+    email : "",
+    documento : "",
+    tipo : ""
+}
+  
 
-  }
+  
 
   constructor( private productService : ProductService, 
-    private router : Router ) { }
+    private router : Router
+    ) { }
 
   ngOnInit(): void {
     
@@ -27,7 +37,7 @@ export class ProductCreateComponent implements OnInit {
 
 createProduct(): void{
 this.productService.create(this.product).subscribe(() => {
-  this.productService.showOnConsole("Produto criado!")
+  this.productService.showOnConsole("Cliente criado!")
   this.router.navigate(['/products'])
 })
 
